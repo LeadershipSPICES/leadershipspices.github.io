@@ -1,4 +1,18 @@
-// Add a dynamic year to the footer
-const footerText = document.getElementById('footer-text');
-const currentYear = new Date().getFullYear();
-footerText.textContent = `© ${currentYear} Leadership SPICES™. All rights reserved.`;
+// A simple script to dynamically load header, home (body), and footer content
+
+document.addEventListener("DOMContentLoaded", () => {
+    loadPart('header.html', '#header');
+    loadPart('home.html', '#content');
+    loadPart('footer.html', '#footer');
+});
+
+function loadPart(file, selector) {
+    fetch(file)
+        .then(response => response.text())
+        .then(data => {
+            document.querySelector(selector).innerHTML = data;
+        })
+        .catch(error => {
+            console.error('Error loading ' + file + ':', error);
+        });
+}
