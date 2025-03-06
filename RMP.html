@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display POST Values</title>
+    <script>
+        function displayPostValues() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const tokenID = urlParams.get('token');
+            const clientID = urlParams.get('clientid');
+
+            document.getElementById('tokenID').textContent = tokenID;
+            document.getElementById('clientID').textContent = clientID;
+        }
+
+        window.onload = displayPostValues;
+    </script>
+</head>
+<body>
+    <h1>Received POST Values</h1>
+    <p><strong>Token ID:</strong> <span id="tokenID"></span></p>
+    <p><strong>Client ID:</strong> <span id="clientID"></span></p>
+</body>
+</html>
